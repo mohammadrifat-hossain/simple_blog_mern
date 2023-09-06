@@ -8,7 +8,7 @@ const HomeMain = () => {
     "Elevate Your Online Experience: Explore, Learn, and Connect";
   const headLineSplite = headLine.split("");
   return (
-    <div className="w-full flex gap-5">
+    <div className="w-full flex gap-5 relative h-screen">
       {/* LEFT */}
       <div className="flex flex-[2] flex-col h-[70vh]  items-center justify-center relative">
         <div className="h-[80%]flex flex-col items-center justify-center">
@@ -73,7 +73,7 @@ const HomeMain = () => {
       </div>
       {/* RIGHT */}
       <div className="flex flex-[3] items-center justify-center">
-        <div className="relative">
+        <div className="relative -mt-24">
           <motion.div
             className="w-[400px] absolute left-24 z-[4]"
             initial={{ x: 40, opacity: 0 }}
@@ -112,7 +112,7 @@ const HomeMain = () => {
       <motion.svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
-        className="absolute left-0 bottom-0 -z-[1] w-full right-0"
+        className="w-[140%] absolute bottom-0 -left-[20%] -z-[1]"
         initial={{ y: 30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >

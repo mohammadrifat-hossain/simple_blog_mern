@@ -10,3 +10,10 @@ export const POST = async (req) => {
 
   return NextResponse.json(data);
 };
+export const GET = async (req) => {
+  await connectDB();
+
+  const data = await blogSchema.find();
+
+  return NextResponse.json(data);
+};

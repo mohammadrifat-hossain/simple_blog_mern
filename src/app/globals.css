@@ -34,3 +34,18 @@ h5 {
 h6 {
   font-size: 16px; /* Adjust the size to your preference */
 }
+.box::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 10px;
+  top: 10px;
+  background: #7e4af8;
+  border-radius: 5px;
+  z-index: -1;
+}
+.box{
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+}

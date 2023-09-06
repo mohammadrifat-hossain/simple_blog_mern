@@ -18,7 +18,7 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll)
     },[])
   return (
-    <div className={`w-full px-12 py-4 flex items-center justify-between shadow bg-white ${addHead ? "fixed" :""} duration-300`}>
+    <div className={`w-full px-12 py-4 flex items-center justify-between shadow bg-white ${addHead ? "fixed" :""} duration-300 z-50`}>
       <div className="flex gap-3">
         <Image
           src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbrqpulRxEcRlxzfcxz9_FR4LF3dO7NTppHw&usqp=CAU'}
