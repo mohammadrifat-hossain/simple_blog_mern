@@ -20,7 +20,7 @@ const ContentPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:3000/api/postcontent");
+      const response = await fetch(`${process.env.PAGE_URL}/api/postcontent`);
       const result = await response.json();
       setContent(result);
       setLoading(false);
