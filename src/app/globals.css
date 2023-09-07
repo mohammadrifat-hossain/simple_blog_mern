@@ -88,7 +88,7 @@ h6 {
     grid-template-columns: 1fr;
   }
   .header{
-    padding: 5px;
+    padding: 20px;
     width: 99vw;
   }
   .container{
