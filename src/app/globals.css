@@ -102,4 +102,7 @@ h6 {
   .comment_inputs input{
     width:100%
   }
+  .logo_img{
+    width:60px
+  }
 }
