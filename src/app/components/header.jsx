@@ -62,6 +62,7 @@ const Header = () => {
           width={100}
           height={100}
           alt="logo"
+          className="logo_img"
         />
         <Link href="/" className="text-[1.8rem] font-bold">
           Bloggify
