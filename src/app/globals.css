@@ -96,4 +96,10 @@ h6 {
     overflow-x: hidden;
     margin: auto;
   }
+  .comment_inputs{
+    flex-direction: column
+  }
+  .comment_inputs input{
+    width:70%
+  }
 }
