@@ -82,7 +82,7 @@ const ContentPage = () => {
       </div>
       {/* content */}
 
-      <div className="grid grid-cols-3 items-center relative">
+      <div className="grid grid-cols-3 items-center relative content_grid">
         {loading ? (
           <div className="w-full bg mx-auto absolute top-0 left-0 flex justify-center">
             <img
@@ -91,20 +91,25 @@ const ContentPage = () => {
             />
           </div>
         ) : (
-          contents?.map((item, i) => (
-            <Link
-              href={`${process.env.PAGE_URL}/singlepage/${item._id}`}
-              key={i}
-              className="w-[400px] h-[350px] bg-slate-200 px-4 py-4 mx-auto my-4 rounded shadow-lg relative box"
-            >
-              <h1 className="font-bold">{item.title}</h1>
-              <h4>Author: {item.author}</h4>
-              <h5>{item.content.substring(0, 200)}...</h5>
-              <button className="px-4 py-2 rounded bg-[#7e4af8] text-white">
-                Read More
-              </button>
-            </Link>
-          ))
+          contents
+            ?.map((item, i) => (
+              <motion.div
+                initial={{x:-40, opacity:0}}
+                whileInView={{x:0, opacity:1}}
+                key={i}
+                className="w-[400px] h-[350px] bg-slate-200 px-4 py-4 mx-auto my-4 rounded shadow-lg relative box "
+              >
+                <Link href={`${process.env.PAGE_URL}/singlepage/${item._id}`}>
+                  <h1 className="font-bold">{item.title}</h1>
+                  <h4>Author: {item.author}</h4>
+                  <h5>{item.content.substring(0, 200)}...</h5>
+                  <button className="px-4 py-2 rounded bg-[#7e4af8] text-white">
+                    Read More
+                  </button>
+                </Link>
+              </motion.div>
+            ))
+            .reverse()
         )}
       </div>
     </div>

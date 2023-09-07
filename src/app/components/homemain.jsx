@@ -8,12 +8,12 @@ const HomeMain = () => {
     "Elevate Your Online Experience: Explore, Learn, and Connect";
   const headLineSplite = headLine.split("");
   return (
-    <div className="w-full flex gap-5 relative h-screen">
+    <div className="w-full flex gap-5 relative h-screen main_page">
       {/* LEFT */}
       <div className="flex flex-[2] flex-col h-[70vh]  items-center justify-center relative">
-        <div className="h-[80%]flex flex-col items-center justify-center">
+        <div className="h-[80%]flex flex-col items-center justify-center main_left">
           <motion.h1
-            className="font-bold  relative text-black mix-blend-multiple flex"
+            className="font-bold  relative text-black mix-blend-multiple flex main_title"
             // initial={{ opacity: 0, y: 20, skewX: -30 }}
             // animate={{ opacity: 1, y: 1, skewX: 0 }}
           >
@@ -28,8 +28,15 @@ const HomeMain = () => {
               </motion.p>
             ))}
           </motion.h1>
+          <motion.h1
+            className="font-bold main_title_phone hidden"
+            initial={{ x: -40, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+          >
+            {headLine}
+          </motion.h1>
           <motion.p
-            className="f font-light"
+            className="f font-light main_des"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
@@ -72,10 +79,10 @@ const HomeMain = () => {
         ></motion.div>
       </div>
       {/* RIGHT */}
-      <div className="flex flex-[3] items-center justify-center">
+      <div className="flex flex-[3] items-center justify-center main_right">
         <div className="relative -mt-24">
           <motion.div
-            className="w-[400px] absolute left-24 z-[4]"
+            className="w-[400px] absolute left-24 z-[4] img_two"
             initial={{ x: 40, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -86,7 +93,7 @@ const HomeMain = () => {
             />
           </motion.div>
           <motion.div
-            className="w-[400px] absolute -top-72 z-[3]"
+            className="w-[400px] absolute -top-72 z-[3] img_one"
             initial={{ y: -40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -97,7 +104,7 @@ const HomeMain = () => {
             />
           </motion.div>
           <motion.div
-            className="w-[400px] absolute -right-20"
+            className="w-[400px] absolute -right-20 img_three"
             initial={{ x: -40, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
           >

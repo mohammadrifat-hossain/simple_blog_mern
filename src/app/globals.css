@@ -49,3 +49,42 @@ h6 {
   border-top: 1px solid #fff;
   border-left: 1px solid #fff;
 }
+
+@media screen and (max-width: 768px) {
+  .nav_links{
+    display: none;
+  }
+  .main_page{
+    flex-direction: column;
+    height: 120vh;
+  }
+  .main_right{
+    flex: 1;
+    height: 60vh;
+  }
+  .main_right img{
+    width: 250px;
+  }
+  .img_one{
+    left:-80px
+  }
+  .img_two{
+    left: 0;
+  }
+  .img_three{
+    left: -200px;
+    top: -100px;
+  }
+  .main_left{
+    width: 95vw;
+  }
+  .main_title{
+    display: none;
+  }
+  .main_title_phone{
+    display: flex;
+  }
+  .content_grid{
+    grid-template-columns: 1fr;
+  }
+}

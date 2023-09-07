@@ -67,7 +67,7 @@ const Header = () => {
           Bloggify
         </Link>
       </div>
-      <div className="flex gap-4 items-center justify-center font-bold text-[20px]">
+      <div className="flex gap-4 items-center justify-center font-bold text-[20px] nav_links">
         <Link className="hover:text-[royalblue] duration-200" href="/">
           Home
         </Link>
@@ -102,7 +102,7 @@ const Header = () => {
         )}
       </div>
       {/* drawer */}
-      <Drawer open={open} onClose={closeDrawer} className="p-4 z-50">
+      <Drawer open={open} onClose={closeDrawer} className=" z-50">
         <div className="mb-6 flex items-center justify-between">
           <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] shadow-xl shadow-blue-gray-900/5">
             <div className="mb-2 p-4">
@@ -150,6 +150,15 @@ const Header = () => {
                 </ListItemPrefix>
                 Settings
               </ListItem> */}
+              <ListItem>
+                <ListItemPrefix>
+                  <PresentationChartBarIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                <Link href='/post' className="text-center font-bold bg-white py-3 w-full">
+                  Post
+                </Link>
+              </ListItem>
+
               <ListItem>
                 <ListItemPrefix>
                   <PowerIcon className="h-5 w-5" />
