@@ -52,7 +52,7 @@ const Header = () => {
     <div
       className={`w-full px-12 py-4 flex items-center justify-between shadow bg-white ${
         addHead ? "fixed" : ""
-      } duration-300 z-50`}
+      } duration-300 z-50 header`}
     >
       <div className="flex gap-3">
         <Image

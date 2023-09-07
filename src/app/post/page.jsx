@@ -6,8 +6,43 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const PostPage = () => {
+  const {data} = useSession()
+  const router = useRouter()
+  const [title, setTitle]= useState('')
+  const [content, setContent]= useState('')
+
+  const handleSubmit = async () =>{
+    if(title != "" && content != ""){
+      const response = await fetch(`${process.env.PAGE_URL}/api/postcontent`,{
+        method:"POST",
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+          title,
+          content,
+          author: data?.user?.name
+        })
+      })
+      if(response.ok){
+        setTitle('')
+        setContent('')
+        toast.info('Your content Uploaded')
+        router.push('/')
+      }else{
+        toast('Something went wrong!')
+      }
+    }else{
+      toast.info('Please enter valid content!')
+    }
+  }
+
   return (
     <div className="container mx-auto">
       <Card
@@ -31,14 +66,18 @@ const PostPage = () => {
               type="text"
               className="px-5 py-2 rounded-full border"
               placeholder="Title"
+              value={title}
+              onChange={(e)=> setTitle(e.target.value)}
             />
             <textarea
               type="text"
               className="px-5 py-2 rounded-[25px] h-[100px] border"
               placeholder="Content"
+              value={content}
+              onChange={(e)=> setContent(e.target.value)}
             />
           </div>
-          <Button className="mt-6 bg-black text-white rounded-full" fullWidth>
+          <Button className="mt-6 bg-black text-white rounded-full" fullWidth onClick={handleSubmit}>
             Post
           </Button>
         </form>

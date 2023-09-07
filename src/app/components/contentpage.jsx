@@ -28,7 +28,7 @@ const ContentPage = () => {
     fetchData();
   }, []);
   return (
-    <div className="w-fll">
+    <div className="w-fll min-h-[60vh]">
       <div className="flex items-center justify-around text-[4rem] text-white bg-[#090b25] py-4 overflow-hidden">
         <motion.div
           initial={{ y: 40, opacity: 0 }}
@@ -94,15 +94,19 @@ const ContentPage = () => {
           contents
             ?.map((item, i) => (
               <motion.div
-                initial={{x:-40, opacity:0}}
-                whileInView={{x:0, opacity:1}}
+                initial={{ x: -40, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
                 key={i}
                 className="w-[400px] h-[350px] bg-slate-200 px-4 py-4 mx-auto my-4 rounded shadow-lg relative box "
               >
                 <Link href={`${process.env.PAGE_URL}/singlepage/${item._id}`}>
-                  <h1 className="font-bold">{item.title}</h1>
+                  <h1 className="font-bold">
+                    {item.title.length > 40
+                      ? item.title.substring(0, 40) + "..."
+                      : item.title}
+                  </h1>
                   <h4>Author: {item.author}</h4>
-                  <h5>{item.content.substring(0, 200)}...</h5>
+                  <h5>{item.content.length > 200 ? item.content.substring(0,200) + "...": item.content}</h5>
                   <button className="px-4 py-2 rounded bg-[#7e4af8] text-white">
                     Read More
                   </button>

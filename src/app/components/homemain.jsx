@@ -8,7 +8,7 @@ const HomeMain = () => {
     "Elevate Your Online Experience: Explore, Learn, and Connect";
   const headLineSplite = headLine.split("");
   return (
-    <div className="w-full flex gap-5 relative h-screen main_page">
+    <div className="w-full flex gap-5 relative min-h-screen h-auto main_page ">
       {/* LEFT */}
       <div className="flex flex-[2] flex-col h-[70vh]  items-center justify-center relative">
         <div className="h-[80%]flex flex-col items-center justify-center main_left">

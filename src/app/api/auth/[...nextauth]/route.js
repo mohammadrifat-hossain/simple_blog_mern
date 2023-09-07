@@ -42,6 +42,7 @@ export const authOptions = {
           console.log(error);
         }
       }
+      return true
     },
   },
 };

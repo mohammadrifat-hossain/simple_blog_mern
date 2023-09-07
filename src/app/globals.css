@@ -87,4 +87,13 @@ h6 {
   .content_grid{
     grid-template-columns: 1fr;
   }
+  .header{
+    padding: 5px;
+    width: 99vw;
+  }
+  .container{
+    width: 100vw;
+    overflow-x: hidden;
+    margin: auto;
+  }
 }
