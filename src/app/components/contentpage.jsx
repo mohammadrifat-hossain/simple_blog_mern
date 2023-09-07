@@ -93,7 +93,7 @@ const ContentPage = () => {
         ) : (
           contents?.map((item, i) => (
             <Link
-              href={`${process.env.PAGE_URL}/${item._id}`}
+              href={`${process.env.PAGE_URL}/singlepage/${item._id}`}
               key={i}
               className="w-[400px] h-[350px] bg-slate-200 px-4 py-4 mx-auto my-4 rounded shadow-lg relative box"
             >

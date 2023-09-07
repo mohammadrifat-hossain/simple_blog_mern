@@ -22,8 +22,8 @@ const schema = new mongoose.Schema({
                 type: String
             },
             posted:{
-                type: String,
-                default: Date.now()
+                type: Date,
+                default: new Date().getTime()
             }
         }
     ]
