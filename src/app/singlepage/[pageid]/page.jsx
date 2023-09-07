@@ -100,7 +100,7 @@ function timeAgo(timestamp) {
           <p>{content.content}</p>
         </div>
         <div className="mt-10 px-10 py-6 rounded-lg border border-solid shadow">
-          <div className="flex gap-5">
+          <div className="flex gap-5 comment_inputs">
             <input
               type="text"
               placeholder="Add Comment"
