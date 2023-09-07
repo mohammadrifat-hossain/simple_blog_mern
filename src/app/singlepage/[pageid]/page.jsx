@@ -3,13 +3,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { useRouter } from "next/navigation";
+import { useSession, signIn } from "next-auth/react";
 
 const SinglePage = ({ params }) => {
   const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(true);
   const [commentInput, setCommentInput] = useState("");
   const router = useRouter()
-  const name = "something"
+  const name = "something";
+  const {status, data: session} = useSession()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,21 +36,25 @@ const SinglePage = ({ params }) => {
 
   //
   const handleAddComment = async ()=>{
-    const postData = await fetch(`${process.env.PAGE_URL}/api/postcomment`,{
-      method:"PUT",
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body: JSON.stringify({
-        id:params.pageid,
-        commentData: commentInput,
-        author: name
+    if(status === 'authenticated'){
+      const postData = await fetch(`${process.env.PAGE_URL}/api/postcomment`,{
+        method:"PUT",
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+          id:params.pageid,
+          commentData: commentInput,
+          author: session?.user?.name
+        })
       })
-    })
-    if(postData.ok){
-      setCommentInput('')
+      if(postData.ok){
+        setCommentInput('')
+      }else{
+        alert("something went wrong")
+      }
     }else{
-      alert("something went wrong")
+      signIn()
     }
   }
   

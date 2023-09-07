@@ -1,5 +1,8 @@
+import { connectDB } from "@/app/models/db/connectDB";
+import { AuthSchema } from "@/app/models/db/schema/Authschema";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
+import { NextResponse } from "next/server";
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -9,15 +12,39 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  // callbacks: {
-  //   async signIn({ account, profile }) {
-  //     if (account.provider === "google") {
-  //       return profile.email_verified && profile.email.endsWith("@example.com");
-  //     }
-  //     return true; // Do different verification for other providers that don't have `email_verified`
-  //   },
-  // },
-};
-const handler = NextAuth(authOptions)
+  callbacks: {
+    async signIn({ user, account }) {
+      if (account.provider === "google") {
+        const { name, email } = user;
 
-export { handler as GET, handler as POST} 
+        try {
+          await connectDB();
+          const data = await AuthSchema.findOne({ email });
+          if (!data) {
+            const status = await fetch(
+              `${process.env.PAGE_URL}/api/postgoogleauth`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  name,
+                  email,
+                }),
+              }
+            );
+            if (status.ok) {
+              return user;
+            }
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
+  },
+};
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };

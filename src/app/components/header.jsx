@@ -104,7 +104,7 @@ const Header = () => {
       {/* drawer */}
       <Drawer open={open} onClose={closeDrawer} className="p-4 z-50">
         <div className="mb-6 flex items-center justify-between">
-          <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+          <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] shadow-xl shadow-blue-gray-900/5">
             <div className="mb-2 p-4">
               <Typography variant="h5" color="blue-gray">
                 {data?.user?.name}
